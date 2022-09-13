@@ -7,7 +7,6 @@ export default class Candle {
     create(CandleDetails:CandleDetails,Coord:Coord){
         const color = CandleDetails.open - CandleDetails.close > 0 ? CandleColor.Red : CandleColor.Green;
         const h:number = color == CandleColor.Green ? CandleDetails.close - CandleDetails.high : CandleDetails.close - CandleDetails.low;
-        console.log(h);
         const CandleCon = new PIXI.Container();
         CandleCon.x = Coord.x;
         CandleCon.y = Coord.y;
