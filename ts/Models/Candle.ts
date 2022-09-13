@@ -14,7 +14,6 @@ export default class Candle {
         const candleBody = this.createCandleBody(CandleDetails,  color);
         const needle = this.createNeedle(CandleDetails, h, color);
         CandleCon.addChild(needle, candleBody);
-
         return CandleCon
     }
 
@@ -38,7 +37,6 @@ export default class Candle {
         candleBody.width = 12;
         candleBody.height = height;
         color == CandleColor.Green ? candleBody.anchor.set(.5, 0) : candleBody.anchor.set(.5, 1);
-        
         return candleBody
     }
 }

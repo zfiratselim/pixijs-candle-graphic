@@ -4,6 +4,7 @@ import Candle from "./Models/Candle";
 
 export default class Game extends PIXI.Application{
     private Candle = new Candle();
+    private Candles:PIXI.Container[] = []
     constructor(w,h){
         super({
             view: <HTMLCanvasElement>document.querySelector('#canvas'),
@@ -23,17 +24,100 @@ export default class Game extends PIXI.Application{
             open:80,
             close:10
         }
-        const exampleDetails2:CandleDetails = {
-            high:100,
-            low:20,
-            open:25,
-            close:85
-        }
-
-        const c = this.Candle.create(exampleDetails,{x: 100,y: 100});
-        const c2 = this.Candle.create(exampleDetails2,{x: 115,y: 100});
-        this.stage.addChild(c, c2);
-        console.log(this.stage.children);
+        const CandlesDetails:CandleDetails[]=[
+            {
+                high:100,
+                low:20,
+                open:25,
+                close:85
+            },
+            {
+                high:90,
+                low:10,
+                open:85,
+                close:15
+            },
+            {
+                high:70,
+                low:10,
+                open:65,
+                close:25
+            },
+            {
+                high:115,
+                low:20,
+                open:25,
+                close:75
+            },
+            {
+                high:70,
+                low:0,
+                open:20,
+                close:65
+            },
+            {
+                high:100,
+                low:10,
+                open:80,
+                close:15
+            },
+            {
+                high:90,
+                low:10,
+                open:25,
+                close:80
+            },
+            {
+                high:100,
+                low:20,
+                open:25,
+                close:85
+            },
+            {
+                high:90,
+                low:10,
+                open:85,
+                close:15
+            },
+            {
+                high:70,
+                low:10,
+                open:65,
+                close:25
+            },
+            {
+                high:115,
+                low:20,
+                open:25,
+                close:75
+            },
+            {
+                high:70,
+                low:0,
+                open:20,
+                close:65
+            },
+            {
+                high:100,
+                low:10,
+                open:80,
+                close:15
+            },
+            {
+                high:90,
+                low:10,
+                open:25,
+                close:80
+            }
+        ]
+        CandlesDetails.forEach((CandleDetails, i) => {
+            for(let c = 0; c < i; c++){
+                this.Candles[c].y = this.Candles[c].y + CandleDetails.close - CandleDetails.open;
+            }
+            const candle = this.Candle.create(CandleDetails,{x: 50 + 15 * i, y: 100});
+            this.Candles.push(candle);
+            this.stage.addChild(candle);
+        });
     }
     update(delta) {
         
