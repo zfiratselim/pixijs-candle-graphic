@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { CandleColor, CandleDetails } from "./interfaces";
+import { CandleDetails } from "./interfaces";
 import Candle from "./Models/Candle";
 
 export default class Game extends PIXI.Application{
@@ -18,10 +18,10 @@ export default class Game extends PIXI.Application{
     startGame(){
         this.ticker.add(delta => this.update(delta));
         const exampleDetails:CandleDetails = {
-            high:90,
+            high:100,
             low:5,
-            open:75,
-            close:5
+            open:80,
+            close:10
         }
         const exampleDetails2:CandleDetails = {
             high:100,
@@ -29,8 +29,9 @@ export default class Game extends PIXI.Application{
             open:25,
             close:85
         }
-        const c = this.Candle.create(exampleDetails,100);
-        const c2 = this.Candle.create(exampleDetails2,150);
+
+        const c = this.Candle.create(exampleDetails,{x: 100,y: 100});
+        const c2 = this.Candle.create(exampleDetails2,{x: 115,y: 100});
         this.stage.addChild(c, c2);
         console.log(this.stage.children);
     }

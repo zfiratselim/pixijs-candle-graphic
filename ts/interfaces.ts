@@ -15,7 +15,7 @@ export interface NeedleDetails{
     low: number
 }
 
-export interface Coords{
+export interface Coord{
     x:number,
     y:number
 }
